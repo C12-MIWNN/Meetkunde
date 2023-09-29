@@ -1,6 +1,7 @@
 package controller;
 
 import model.Cirkel;
+import model.Figuur;
 import model.Punt;
 import model.Rechthoek;
 
@@ -30,10 +31,26 @@ public class MeetkundeLauncher {
 
         for (int arrayTeller = 0; arrayTeller < mijnRechthoekArray.length;
              arrayTeller++) {
-            System.out.println(mijnRechthoekArray[arrayTeller]);
-            System.out.println(mijnRechthoekArray[arrayTeller].
-                    vertelOverDeGrootte());
-            System.out.println();
+            toonInformatie(mijnRechthoekArray[arrayTeller]);
         }
+
+        Figuur[] figuren = new Figuur[6];
+        figuren[0] = mijnCirkelArray[0];
+        figuren[1] = mijnCirkelArray[1];
+        figuren[2] = mijnCirkelArray[2];
+        figuren[3] = mijnRechthoekArray[0];
+        figuren[4] = mijnRechthoekArray[1];
+        figuren[5] = mijnRechthoekArray[2];
+
+        for (int figuur = 0; figuur < figuren.length; figuur++) {
+            toonInformatie(figuren[figuur]);
+            figuren[figuur].
+        }
+    }
+
+    public static void toonInformatie(Figuur figuur) {
+        System.out.println(figuur);
+        System.out.println(figuur.vertelOverDeGrootte());
+        System.out.println();
     }
 }

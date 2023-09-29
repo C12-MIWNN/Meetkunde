@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Beschrijft de algemene eigenschappen van een figuur
  */
-public class Figuur {
+public abstract class Figuur {
     private static final String DEFAULT_KLEUR = "crimson";
 
     private static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
@@ -25,13 +25,9 @@ public class Figuur {
         return "Een figuur is een verzameling punten.";
     }
 
-    public double geefOmtrek() {
-        return 0;
-    }
+    public abstract double geefOmtrek();
 
-    public double geefOppervlakte() {
-        return 0;
-    }
+    public abstract double geefOppervlakte();
 
     public String vertelOverDeGrootte() {
         if (geefOppervlakte() < GRENSWAARDE_GROOT_FIGUUR) {
