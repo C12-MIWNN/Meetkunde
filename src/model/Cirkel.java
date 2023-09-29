@@ -39,6 +39,11 @@ public class Cirkel extends Figuur {
         return Math.PI * straal * straal;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s\nstraal: %s\nmiddelpunt: %s", super.toString(), this.straal, this.middelpunt);
+    }
+
     public Punt getMiddelpunt() {
         return middelpunt;
     }

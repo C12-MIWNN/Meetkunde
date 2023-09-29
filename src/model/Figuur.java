@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Scanner;
+
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Beschrijft de algemene eigenschappen van een figuur
@@ -37,6 +39,12 @@ public class Figuur {
         } else {
             return "Deal with it!";
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("kleur: %s\nomtrek: %.2f\noppervlakte: %.2f",
+                this.kleur, this.geefOmtrek(), this.geefOppervlakte());
     }
 
     public String getKleur() {
