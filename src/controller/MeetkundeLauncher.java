@@ -44,7 +44,6 @@ public class MeetkundeLauncher {
 
         for (int figuur = 0; figuur < figuren.length; figuur++) {
             toonInformatie(figuren[figuur]);
-            figuren[figuur].
         }
     }
 
