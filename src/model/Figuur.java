@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Beschrijft de algemene eigenschappen van een figuur
  */
-public abstract class Figuur {
+public abstract class Figuur implements Comparable<Figuur> {
     private static final String DEFAULT_KLEUR = "crimson";
 
     private static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
@@ -37,7 +37,22 @@ public abstract class Figuur {
         }
     }
 
+    @Override
+    public int compareTo(Figuur anderFiguur) {
+        if (this.geefOppervlakte() > anderFiguur.geefOppervlakte()) {
+            return 1;
+        } else if (this.geefOppervlakte() < anderFiguur.geefOppervlakte()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 
+    @Override
+    public String toString() {
+        return String.format("kleur: %s\nomtrek: %.2f\noppervlakte: %.2f",
+                this.kleur, this.geefOmtrek(), this.geefOppervlakte());
+    }
 
     public String getKleur() {
         return kleur;

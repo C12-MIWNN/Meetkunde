@@ -20,8 +20,6 @@ public class MeetkundeLauncher {
         oppervlak.voegFiguurToe(new Rechthoek(6, 9));
 
         System.out.println(oppervlak);
-
-        System.out.println(oppervlak.figurenMetEenGroterOppervlak(25));
     }
 
     public static void toonInformatie(Figuur figuur) {

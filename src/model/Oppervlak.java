@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Oppervlak {
 
@@ -48,6 +49,8 @@ public class Oppervlak {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+
+        Collections.sort(figuren);
 
         for (Figuur figuur : figuren) {
             stringBuilder.append(figuur.toString()).append("\n\n");
