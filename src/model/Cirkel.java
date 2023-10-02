@@ -48,6 +48,10 @@ public class Cirkel extends Figuur {
         return middelpunt;
     }
 
+    public double getStraal() {
+        return straal;
+    }
+
     public void setStraal(double straal) {
         if (straal <= 0) {
             System.err.printf("De straal moet positief zijn. De straal wordt nu op %d gezet.\n", DEFAULT_STRAAL);

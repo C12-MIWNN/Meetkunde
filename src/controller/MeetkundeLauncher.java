@@ -1,9 +1,6 @@
 package controller;
 
-import model.Cirkel;
-import model.Figuur;
-import model.Punt;
-import model.Rechthoek;
+import model.*;
 
 import java.util.ArrayList;
 
@@ -14,28 +11,19 @@ import java.util.ArrayList;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
-        ArrayList<Figuur> figuren = new ArrayList<>();
+        Oppervlak oppervlak = new Oppervlak(10, 10);
 
-        figuren.add(new Cirkel(3, new Punt(1,4), "groen"));
-        figuren.add(new Cirkel());
+        oppervlak.voegFiguurToe(new Cirkel());
+        oppervlak.voegFiguurToe(new Cirkel(3));
+        oppervlak.voegFiguurToe(new Cirkel(6));
+        oppervlak.voegFiguurToe(new Rechthoek());
+        oppervlak.voegFiguurToe(new Rechthoek(15, 6));
+        oppervlak.voegFiguurToe(new Rechthoek(6, 15));
+        oppervlak.voegFiguurToe(new Rechthoek(6, 9));
 
-        System.out.printf("Er zijn %d figuren\n", figuren.size());
-        figuren.add(new Cirkel(6));
-        System.out.printf("Er zijn %d figuren\n", figuren.size());
-        figuren.remove(0);
-        System.out.printf("Er zijn %d figuren\n", figuren.size());
+        System.out.println(oppervlak);
 
-
-        for (Figuur figuur : figuren) {
-            System.out.println(figuur);
-            System.out.println();
-        }
-
-        Rechthoek[] mijnRechthoekArray = new Rechthoek[3];
-        mijnRechthoekArray[0] = new Rechthoek(4, 3, new Punt(2, 5), "blauw");
-        mijnRechthoekArray[1] = new Rechthoek();
-        mijnRechthoekArray[2] = new Rechthoek(25, 10);
-
+        System.out.println(oppervlak.figurenMetEenGroterOppervlak(25));
     }
 
     public static void toonInformatie(Figuur figuur) {

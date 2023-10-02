@@ -37,11 +37,7 @@ public abstract class Figuur {
         }
     }
 
-    @Override
-    public String toString() {
-        return String.format("kleur: %s\nomtrek: %.2f\noppervlakte: %.2f",
-                this.kleur, this.geefOmtrek(), this.geefOppervlakte());
-    }
+
 
     public String getKleur() {
         return kleur;
