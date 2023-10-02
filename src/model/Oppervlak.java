@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Oppervlak {
 
-    private double lengte;
-    private double breedte;
-    private ArrayList<Figuur> figuren;
+    private final double lengte;
+    private final double breedte;
+    private final ArrayList<Figuur> figuren;
 
     public Oppervlak(double lengte, double breedte) {
         this.lengte = lengte;

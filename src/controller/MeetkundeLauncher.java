@@ -2,8 +2,6 @@ package controller;
 
 import model.*;
 
-import java.util.ArrayList;
-
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Spelen met meetkunde
