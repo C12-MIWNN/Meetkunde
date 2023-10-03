@@ -4,6 +4,7 @@ import model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,7 +33,14 @@ public class MeetkundeLauncher {
             System.out.println("Het bestand is niet gevonden");
         }
 
-        System.out.println(rechthoeken);
+        File uitvoerBestand = new File("resources/Rechthoeken.txt");
+        try (PrintWriter printWriter = new PrintWriter(uitvoerBestand)) {
+            for (Rechthoek rechthoek : rechthoeken) {
+                printWriter.println(rechthoek + "\n");
+            }
+        } catch (FileNotFoundException fileNotFoundException) {
+            System.out.println("Het is niet gelukt het bestand aan te maken");
+        }
     }
 
 }
