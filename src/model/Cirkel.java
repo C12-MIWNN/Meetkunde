@@ -60,4 +60,9 @@ public class Cirkel extends Figuur {
             this.straal = straal;
         }
     }
+
+    @Override
+    public boolean pastInOppervlak(double lengte, double breedte) {
+        return straal <= lengte / 2 && straal <= breedte / 2;
+    }
 }

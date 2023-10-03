@@ -16,21 +16,11 @@ public class Oppervlak {
     }
 
     public void voegFiguurToe(Figuur figuur) {
-        if (figuurPastInOppervlak(figuur)) {
+        if (figuur.pastInOppervlak(lengte, breedte)) {
             figuren.add(figuur);
             System.out.println("Het figuur is toegevoegd");
         } else {
             System.out.println("Dit figuur is te groot en gaan we fijn negeren");
-        }
-    }
-
-    private boolean figuurPastInOppervlak(Figuur figuur) {
-        if (figuur instanceof Rechthoek) {
-            return (((Rechthoek) figuur).getLengte() <= lengte && ((Rechthoek) figuur).getBreedte() <= breedte);
-        } else if (figuur instanceof Cirkel) {
-            return ((Cirkel) figuur).getStraal() <= lengte / 2 && ((Cirkel) figuur).getStraal() <= breedte / 2;
-        } else {
-            return false;
         }
     }
 
