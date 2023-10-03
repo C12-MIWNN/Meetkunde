@@ -15,8 +15,8 @@ public class Rechthoek extends Figuur {
 
     public Rechthoek(double lengte, double breedte, Punt hoekpuntLinksBoven, String kleur) {
         super(kleur);
-        this.lengte = lengte;
-        this.breedte = breedte;
+        setLengte(lengte);
+        setBreedte(breedte);
         this.hoekpuntLinksBoven = hoekpuntLinksBoven;
     }
 
@@ -55,8 +55,24 @@ public class Rechthoek extends Figuur {
         return lengte;
     }
 
+    public void setLengte(double lengte) {
+        if (lengte <= 0) {
+            throw new IllegalArgumentException("De lengte moet een positief getal zijn.");
+        }
+
+        this.lengte = lengte;
+    }
+
     public double getBreedte() {
         return breedte;
+    }
+
+    public void setBreedte(double breedte) {
+        if (breedte <= 0) {
+            throw new IllegalArgumentException("De breedte moet een positief getal zijn.");
+        }
+
+        this.breedte = breedte;
     }
 
     @Override
