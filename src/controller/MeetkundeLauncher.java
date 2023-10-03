@@ -2,6 +2,10 @@ package controller;
 
 import model.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,48 +16,35 @@ import java.util.Scanner;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
-        Scanner keyboard = new Scanner(System.in);
+        ArrayList<String> regelsUitHetBestand = new ArrayList<>();
 
-        boolean onjuisteInvoer = true;
-        while (onjuisteInvoer) {
-            System.out.print("Wat moet de straal van de cirkel zijn? ");
-            try {
-                double straal = keyboard.nextDouble();
-                Cirkel cirkel = new Cirkel(straal);
-                System.out.println(cirkel);
-                onjuisteInvoer = false;
-            } catch (IllegalArgumentException illegalArgumentException) {
-                System.out.println(illegalArgumentException.getMessage());
-            } catch (InputMismatchException inputMismatchException) {
-                System.out.println("Ik verwacht wel een getal van je...");
-                keyboard.nextLine();
+        File rechthoekenBestand = new File("resources/Rechthoek.csv");
+
+        try {
+            Scanner invoerBestand = new Scanner(rechthoekenBestand);
+
+            while (invoerBestand.hasNextLine()) {
+                regelsUitHetBestand.add(invoerBestand.nextLine());
             }
-
-            System.out.println("Je invoer, goed of fout, is nu afgehandeld");
-
+        } catch (FileNotFoundException fileNotFoundException) {
+            System.out.println("Het bestand is niet gevonden");
         }
 
-        onjuisteInvoer = true;
+        ArrayList<Rechthoek> rechthoeken = new ArrayList<>();
 
-        while (onjuisteInvoer) {
-            System.out.print("Wat is de lengte? ");
-            double lengte = keyboard.nextDouble();
-            System.out.print("Wat is de breedte? ");
-            double breedte = keyboard.nextDouble();
+        for (String regelMetRechthoek : regelsUitHetBestand) {
+            String[] waardenVanRechthoek = regelMetRechthoek.split(",");
 
-            try {
-                Rechthoek rechthoek = new Rechthoek(lengte, breedte);
-                System.out.println(rechthoek);
-                onjuisteInvoer = false;
-            } catch (IllegalArgumentException illegalArgumentException) {
-                System.out.println(illegalArgumentException.getMessage());
-            }
+            double lengte = Double.parseDouble(waardenVanRechthoek[0]);
+            double breedte = Double.parseDouble(waardenVanRechthoek[1]);
+            double xCoordinaat = Double.parseDouble(waardenVanRechthoek[2]);
+            double yCoordinaat = Double.parseDouble(waardenVanRechthoek[3]);
+            String kleur = waardenVanRechthoek[4];
+
+            rechthoeken.add(new Rechthoek(lengte, breedte, new Punt(xCoordinaat, yCoordinaat), kleur));
         }
+
+        System.out.println(rechthoeken);
     }
 
-    public static void toonInformatie(Figuur figuur) {
-        System.out.println(figuur);
-        System.out.println(figuur.vertelOverDeGrootte());
-        System.out.println();
-    }
 }
