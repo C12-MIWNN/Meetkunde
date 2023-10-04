@@ -67,4 +67,8 @@ public abstract class AbstractDAO {
 		}
 		return gegenereerdeSleutel;
 	}
+
+	public void sqlExceptionWarning(SQLException sqlException) {
+		System.err.println("SQL fout: " + sqlException.getMessage());
+	}
 }
