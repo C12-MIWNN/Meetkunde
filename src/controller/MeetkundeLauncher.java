@@ -1,5 +1,7 @@
 package controller;
 
+import database.CirkelDAO;
+import database.DBaccess;
 import model.*;
 
 import java.io.File;
@@ -15,32 +17,11 @@ import java.util.Scanner;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
-        ArrayList<Rechthoek> rechthoeken = new ArrayList<>();
-
-        try (Scanner invoerBestand = new Scanner(new File("resources/Rechthoek.csv"))) {
-            while (invoerBestand.hasNextLine()) {
-                String[] waardenVanRechthoek = invoerBestand.nextLine().split(",");
-
-                double lengte = Double.parseDouble(waardenVanRechthoek[0]);
-                double breedte = Double.parseDouble(waardenVanRechthoek[1]);
-                double xCoordinaat = Double.parseDouble(waardenVanRechthoek[2]);
-                double yCoordinaat = Double.parseDouble(waardenVanRechthoek[3]);
-                String kleur = waardenVanRechthoek[4];
-
-                rechthoeken.add(new Rechthoek(lengte, breedte, new Punt(xCoordinaat, yCoordinaat), kleur));
-            }
-        } catch (FileNotFoundException fileNotFoundException) {
-            System.out.println("Het bestand is niet gevonden");
-        }
-
-        File uitvoerBestand = new File("resources/Rechthoeken.txt");
-        try (PrintWriter printWriter = new PrintWriter(uitvoerBestand)) {
-            for (Rechthoek rechthoek : rechthoeken) {
-                printWriter.println(rechthoek + "\n");
-            }
-        } catch (FileNotFoundException fileNotFoundException) {
-            System.out.println("Het is niet gelukt het bestand aan te maken");
-        }
+        DBaccess dBaccess = new DBaccess("figuren", "userFiguren","userFigurenPW");
+        dBaccess.openConnection();
+        CirkelDAO cirkelDAO = new CirkelDAO(dBaccess);
+        cirkelDAO.slaCirkelOp(new Cirkel(5, new Punt(3, 7), "menopause sweater purple"));
+        dBaccess.closeConnection();
     }
 
 }

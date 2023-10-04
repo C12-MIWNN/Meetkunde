@@ -39,11 +39,12 @@ public class Oppervlak {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(String.format("Oppervlak met lengte %.1f en breedte %.1f", lengte, breedte));
 
         Collections.sort(figuren);
 
         for (Figuur figuur : figuren) {
-            stringBuilder.append(figuur.toString()).append("\n\n");
+            stringBuilder.append("\n\n").append(figuur.toString());
         }
 
         return stringBuilder.toString();
